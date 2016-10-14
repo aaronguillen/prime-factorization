@@ -1,0 +1,64 @@
+#some-sample-output
+
+So I find this interesting. The algorithm wasn't quite finished when I ran this test. It looked like:
+
+def primeFactors(x):
+    ret = []
+
+    if x < 0:
+        ret.append(-1)
+        x *= -1
+    elif x == 0:
+        ret.append(0)
+        return ret
+    if x == 1:
+        ret.append(1)
+        return ret
+
+    y = 2
+
+    while x >= y:
+        if x % y == 0:
+            x /= y
+            ret.append(y)
+        else:
+            y += 1
+    return ret;
+	
+As you can see, it's missing the part where we only check up to half the value of x, our input. Nonetheless, some sample output is below
+
+4294967280 : 0xfffffff0 : [2, 2, 2, 2, 3, 5, 29, 43, 113, 127] : 0.011003732681274414
+4294967281 : 0xfffffff1 : [11, 181, 241, 8951] : 0.008005857467651367
+4294967282 : 0xfffffff2 : [2, 2699, 795659] : 0.30118656158447266
+4294967283 : 0xfffffff3 : [3, 3, 389, 1226783] : 0.422283411026001
+4294967284 : 0xfffffff4 : [2, 2, 23, 46684427] : 16.131986379623413
+4294967285 : 0xfffffff5 : [5, 7, 122713351] : 42.54020094871521
+4294967286 : 0xfffffff6 : [2, 3, 715827881] : 250.12856602668762
+4294967287 : 0xfffffff7 : [13, 71, 71, 65539] : 0.02301621437072754
+4294967288 : 0xfffffff8 : [2, 2, 2, 233, 1103, 2089] : 0.002001523971557617
+4294967289 : 0xfffffff9 : [3, 37, 167, 223, 1039] : 0.0010008811950683594
+4294967290 : 0xfffffffa : [2, 5, 19, 22605091] : 7.811654329299927
+4294967291 : 0xfffffffb : [4294967291] : 1218.5237658023834
+4294967292 : 0xfffffffc : [2, 2, 3, 3, 7, 11, 31, 151, 331] : 0.0010006427764892578
+4294967293 : 0xfffffffd : [9241, 464773] : 0.2012345790863037
+ 
+I'd like to point out 4294967291 = 0xfffffffb. The largest 32-bit prime took just over twenty minutes (1218 seconds to calculate. Do not, here are the specs I was running for this test:
+
+Windows 10 64-bit
+Intel Core i5-2400 CPU @ 3.10GHz
+4.00 GB RAM
+Python version 3.5.2 and IDLE version 3.5.2
+
+After I (think I) optimized the algorithm, I ran it again, this time just on our large prime 0xfffffffb.
+
+4294967291 : 0xfffffffb : [4294967291] : 1047.0673060417175
+
+This is about 17 minutes, 1047 seconds.
+
+However, the system specs are different.
+
+Windows 10 64-bit
+Intel Core i7-3612QM CPU @ 2.10GHz
+8.00 GB RAM
+Python version 2.7.6 and IDLE version 2.7.6
+
