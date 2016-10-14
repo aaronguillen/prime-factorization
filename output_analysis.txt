@@ -42,7 +42,7 @@ As you can see, it's missing the part where we only check up to half the value o
 4294967292 : 0xfffffffc : [2, 2, 3, 3, 7, 11, 31, 151, 331] : 0.0010006427764892578
 4294967293 : 0xfffffffd : [9241, 464773] : 0.2012345790863037
  
-I'd like to point out 4294967291 = 0xfffffffb. The largest 32-bit prime took just over twenty minutes (1218 seconds to calculate. Do not, here are the specs I was running for this test:
+I'd like to point out 4294967291 = 0xfffffffb. The largest 32-bit prime took just over twenty minutes (1218 seconds to calculate. Do note, here are the specs I was running for this test:
 
 Windows 10 64-bit
 Intel Core i5-2400 CPU @ 3.10GHz
