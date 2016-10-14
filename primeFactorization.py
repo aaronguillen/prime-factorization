@@ -53,40 +53,37 @@ def usage(exitCode):
     print("\t\t integer : hex : prime factors : time elapsed in computation")
     sys.exit(exitCode)
 
-if len(sys.argv) != 2 and len(sys.argv) != 3:
-    usage(1)
-
-#Allow command line input
-if len(sys.argv) == 2: #If we have one input from the command line
-    try:
-        x = int(sys.argv[1], 0) #int(stringValue, 0) adding this second parameter, this zero, tells Python to guess the base, allowing hex input such as 0xFF
-    except ValueError:
-        print("Cannot get integer values from you input: \"" + sys.argv[1] + "\"")
-        usage(-1)
+def organizePrint(x):
     startTime = time.time()
     sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
     print(" : " + str(time.time() - startTime))
-if len(sys.argv) == 3: #If we have two inputs from the command line
+
+if len(sys.argv) != 2 and len(sys.argv) != 3:
+    usage(1)
+
+try:
+    x = int(sys.argv[1], 0) #int(stringValue, 0) adding this second parameter, this zero, tells Python to guess the base, allowing hex input such as 0xFF
+except ValueError: #They give us input that cannot be parsed to an integer
+    print("Cannot get integer values from you input: \"" + sys.argv[1] + "\"")
+    usage(-1)
+
+#Allow command line input
+if len(sys.argv) == 2: #If we have one input from the command line
+    organizePrint(x)
+else: #If we have two inputs from the command line.
     try:
-        x = int(sys.argv[1], 0)
         y = int(sys.argv[2], 0)
-    except ValueError: #They give us input that cannot be parsed to an integer
-        print("Cannot get integer values from you input: \"" + sys.argv[1] + "\" \"" + sys.argv[2] + "\"")
+    except ValueError:
+        print("Cannot get integer values from you input: \"" + sys.argv[2] + "\"")
         usage(-1)
     if x < y: #We're going to allow input from low to high or high to low
         for i in range(x, y):
-            startTime = time.time()
-            sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
-            print(" : " + str(time.time() - startTime))
+            organizePrint(i)
     elif x > y:
         for i in range(x, y, -1): #Step down if input is high to low
-            startTime = time.time()
-            sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
-            print(" : " + str(time.time() - startTime))
+            organizePrint(i)
     else: #The numbers they provided are the same
-        startTime = time.time()
-        sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
-        print(" : " + str(time.time() - startTime))
+        organizePrint(x)
 
 #If we want to simply remove any non digit-values from our command line input (or any string)
 #I don't actually use this, but it's here if you don't want to deal with

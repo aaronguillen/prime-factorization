@@ -36,36 +36,33 @@ def usage(exitCode):
     print("\t\t integer : hex : prime factors : time elapsed in computation")
     sys.exit(exitCode)
 
-if len(sys.argv) != 2 and len(sys.argv) != 3:
-    usage(1)
-
-if len(sys.argv) == 2:
-    try:
-        x = int(sys.argv[1], 0)
-    except ValueError:
-        print("Cannot get integer values from you input: \"" + sys.argv[1] + "\"")
-        usage(-1)
+def organizePrint(x):
     startTime = time.time()
     sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
     print(" : " + str(time.time() - startTime))
-if len(sys.argv) == 3:
+
+if len(sys.argv) != 2 and len(sys.argv) != 3:
+    usage(1)
+
+try:
+    x = int(sys.argv[1], 0)
+except ValueError:
+    print("Cannot get integer values from you input: \"" + sys.argv[1] + "\"")
+    usage(-1)
+
+if len(sys.argv) == 2:
+    organizePrint(x)
+else: 
     try:
-        x = int(sys.argv[1], 0)
         y = int(sys.argv[2], 0)
     except ValueError:
-        print("Cannot get integer values from you input: \"" + sys.argv[1] + "\" \"" + sys.argv[2] + "\"")
+        print("Cannot get integer values from you input: \"" + sys.argv[1] + "\"")
         usage(-1)
     if x < y:
         for i in range(x, y):
-            startTime = time.time()
-            sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
-            print(" : " + str(time.time() - startTime))
+            organizePrint(i)
     elif x > y:
         for i in range(x, y, -1):
-            startTime = time.time()
-            sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
-            print(" : " + str(time.time() - startTime))
+            organizePrint(i)
     else:
-        startTime = time.time()
-        sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
-        print(" : " + str(time.time() - startTime))
+        organizePrint(x)
