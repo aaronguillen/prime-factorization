@@ -26,3 +26,13 @@ will give you the prime factorization for one through nine.
 The output is of the following form (for each factored value):
 
 integerRepresentation : hexadecimalRepresentation : [prime factors] : time elapsed during computation
+
+---------------
+
+So the files included in this repository. This readme.md, obviously, and the license file (GPL, feel free to change use, whatever).
+
+I also have an output_analysis.txt where I basically just talk more, but, if you're into this stuff you may find it mildly interesting.
+
+The script, of course, primeFactorization.py.
+
+Now, I tend to get a little comment-heavy in my code. I know commenting is good practice, I know too much of a good thing is not a good thing, and I know I tend to go a little overboard. So I also included primeFactorization_clean.py which is the same script without comments. I know sometimes it's nice to just look at the code.
