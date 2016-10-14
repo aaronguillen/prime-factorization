@@ -1,7 +1,7 @@
 # prime-factorization
 I think, at least, a pretty clever prime factorization algorithm.
 
-I was working on a program for Diffie-Hellman and I needed to find the primitive root for a given value. Finding the primitive root of a value invovles knowing that value's prime factors. My solution was ineligant, to say the least, but functional. It was later that I thought of this algorithm and decided to test its speed.
+I was working on a program for Diffie-Hellman and I needed to find the primitive root for a given value. Finding the primitive root of a value involves knowing that value's prime factors. My solution was ineligant, to say the least, but functional. It was later that I thought of this algorithm and decided to test its speed.
 
 I thought of the algorithm independently, though I'm sure it already exists. Either way, I felt pretty good when I thought of it and decided to code it. Of course, I used Python. I plan to implement it in Ruby, as well.
 
