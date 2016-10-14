@@ -55,13 +55,17 @@ if len(sys.argv) == 3:
     except ValueError:
         print("Cannot get integer values from you input: \"" + sys.argv[1] + "\" \"" + sys.argv[2] + "\"")
         usage(-1)
-    if int(x < y):
+    if x < y:
         for i in range(x, y):
             startTime = time.time()
             sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
             print(" : " + str(time.time() - startTime))
-    else:
+    elif x > y:
         for i in range(x, y, -1):
             startTime = time.time()
             sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
             print(" : " + str(time.time() - startTime))
+    else:
+        startTime = time.time()
+        sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
+        print(" : " + str(time.time() - startTime))

@@ -73,16 +73,20 @@ if len(sys.argv) == 3: #If we have two inputs from the command line
     except ValueError: #They give us input that cannot be parsed to an integer
         print("Cannot get integer values from you input: \"" + sys.argv[1] + "\" \"" + sys.argv[2] + "\"")
         usage(-1)
-    if int(x < y): #We're going to allow input from low to high or high to low
+    if x < y: #We're going to allow input from low to high or high to low
         for i in range(x, y):
             startTime = time.time()
             sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
             print(" : " + str(time.time() - startTime))
-    else:
+    elif x > y:
         for i in range(x, y, -1): #Step down if input is high to low
             startTime = time.time()
             sys.stdout.write(str(i) + " : " + hex(i) + " : " + str(primeFactors(i)))
             print(" : " + str(time.time() - startTime))
+    else: #The numbers they provided are the same
+        startTime = time.time()
+        sys.stdout.write(str(x) + " : " + hex(x) + " : " + str(primeFactors(x)))
+        print(" : " + str(time.time() - startTime))
 
 #If we want to simply remove any non digit-values from our command line input (or any string)
 #I don't actually use this, but it's here if you don't want to deal with
