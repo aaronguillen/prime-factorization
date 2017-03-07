@@ -93,6 +93,7 @@ def removeAlpha(inStr):
     for i in inStr:
         if not str(i).isdigit():
             inStr = inStr.replace(i, "")
+    return inStr
 
 #for i in range (0xFFFFFFF0, 0xFFFFFFFF):
 #    startTime = time.time()
